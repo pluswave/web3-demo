@@ -18,16 +18,16 @@ const data = method.encodeABI();
 
 console.log(data);
 
-function generateHashTable(){
+function generateHashTable(abi){
     var hashTable = {};
-    poly_abi.forEach( func_def =>{
+    abi.forEach( func_def =>{
         var hash = web3.eth.abi.encodeFunctionSignature(func_def);
         hashTable[hash] = func_def;
     });
     return hashTable;
 }
 
-const hashTable = generateHashTable();
+const hashTable = generateHashTable(poly_abi);
 
 console.log(hashTable);
 
