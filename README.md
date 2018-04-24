@@ -13,6 +13,7 @@
 | pastEvent.js  | 查看智能合约的历史事件          |
 | subscribe_erc20_transfer.js | 监听ERC20的转账事件 |
 | subscribe_eth_balance.js    | 监听某个地址的ETH余额 |
+| decodeAbi.js                | 解码智能合约调用的函数和参数 |
 
 除了 subscribe_eth_balance.js 使用了parity特别的接口，其他的使用通用的接口。
 
