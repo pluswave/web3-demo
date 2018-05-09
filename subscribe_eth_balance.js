@@ -1,7 +1,7 @@
 'use strict'
 
 const api = require('./parity-instance');
-const web3 = require('./web3-instance');
+const web3 = require('./web3-websocket-instance');
 //console.log(api.parity);
 
 // console.log(api.pubsub);

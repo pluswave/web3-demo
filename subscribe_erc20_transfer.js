@@ -1,7 +1,7 @@
 'use strict'
 
 
-const web3 = require('./web3-instance');
+const web3 = require('./web3-websocket-instance');
 const poly_abi = require('./polyabi.json');
 
 const keyStore = require('./from_address.json');
@@ -11,8 +11,17 @@ const contract = new web3.eth.Contract(poly_abi, '0x96A62428509002a7aE5F6AD29E47
     from: keyStore.address
 })
 
-contract.events.Transfer({
-    filter: {to: [toStore.address] }, 
-}).on('data', function(e){
-    console.log(e);
-})
+function listenOnTransferEvents() {
+    contract.events.Transfer({
+        filter: { to: [toStore.address] },
+    }).on('data', function (e) {
+        console.log('data', e);
+    }).on('changed', o => {
+        console.log('changed', o);
+    }).on('error', e => {
+        console.log('error', e);
+        listenOnTransferEvents();
+    })
+}
+
+listenOnTransferEvents();

@@ -12,6 +12,6 @@
     "@parity/api": "^2.1.20",
     "prompt-password": "^1.2.0",
     "prompt-password-strength": "^1.1.0",
-    "web3": "^1.0.0-beta.31"
+    "web3": "^1.0.0-beta.34"
   }
 }
