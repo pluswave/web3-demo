@@ -9,7 +9,7 @@ var prompt = new Prompt({
 // var Accounts = require('web3-eth-accounts');
 // var Tx = require('ethereumjs-tx');
 
-const web3 = require('./web3-websocket-instance');
+const web3 = require('./web3-instance');
 
 const accounts = web3.eth.accounts;
 
@@ -73,7 +73,7 @@ function generateSignedTransaction(web3, fromAccount, toAddress, eth_amount) {
         var count = results[1];
         // var tx = new Tx(rawTx);
 
-        rawTx.gasPrice = price / 2;
+        rawTx.gasPrice = price / 20;
         rawTx.nonce = count;
         console.log('gasPrice', price);
         return fromAccount.signTransaction(rawTx)
