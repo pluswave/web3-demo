@@ -25,7 +25,7 @@ prompt.run()
             from: account.address
         })
         
-        const method = contract.methods.transfer(keyStore_to.address, 1e17);
+        const method = contract.methods.transfer('0x931D7e796984a15BEd2f89A796F44e6bDbb0117A', '' + 1e17);
         contractExecute(web3, account, contract, method)
             .then( (r)=>{
                 console.log('success', r);
@@ -55,7 +55,7 @@ function contractExecute(web3, account, contract, method) {
         from: account.address,
         nonce: '0x00',
         value: '0x',
-        gasPrice: '0x09184e72a000',
+        gasPrice: '0x5',
         gasLimit: '21000', // 
         data: method.encodeABI()
     }

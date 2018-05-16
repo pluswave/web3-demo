@@ -21,7 +21,7 @@ prompt.run()
         var account = accounts.decrypt(keyStore, password);
 
         var keyStore_to = require('./to_address.json');
-        sendEth(web3, account, keyStore_to.address, '0.005')
+        sendEth(web3, account, '0x931D7e796984a15BEd2f89A796F44e6bDbb0117A', '0.008')
             .then((r)=>{
                 console.log(r);
                 process.exit(0);
