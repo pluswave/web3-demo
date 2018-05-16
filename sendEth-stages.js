@@ -12,7 +12,7 @@ var prompt = new Prompt({
 const web3 = require('./web3-instance');
 
 const accounts = web3.eth.accounts;
-
+const ethlib = require('eth-lib');
 
 
 keyStore = require('./from_address.json');
@@ -24,7 +24,8 @@ prompt.run()
         function _internalSend(){
             generateSignedTransaction(web3, account, keyStore_to.address, '0.005')
                 .then(signedTx =>{
-                    console.log(signedTx);
+                    console.log('tx', signedTx, ethlib.Hash.keccak256s(signedTx));
+
                     web3.eth.sendSignedTransaction(signedTx)
                         .on('transactionHash', (hash)=>{
                             console.log('hash', hash);
