@@ -29,8 +29,9 @@ prompt.run()
         }).encodeABI();
         return contractDeploy(web3, account, data);
     })
+    .then( console.log)
     .catch((x) => {
-        console.log(x)
+        console.error(x)
         process.exit(1)
     })
 // console.log(account3);
@@ -39,7 +40,7 @@ function contractDeploy(web3, account, data) {
 
 
     var rawTx = {
-        to: web3.utils.padRight('0x0', 40),
+        // to: web3.utils.padRight('0x0', 40),
         from: account.address,
         nonce: '0x00',
         value: '0x',
