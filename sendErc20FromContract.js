@@ -34,7 +34,7 @@ const contract = new web3.eth.Contract(multiSigAbi, multiSigContractAddress);
 
 const poly_abi = require('./polyabi.json');
 const poly_contract = new web3.eth.Contract(poly_abi, '0x96A62428509002a7aE5F6AD29E4750d852A3f3D7');
-const function_data = poly_contract.methods.getTokens(1e20).encodeABI();
+const function_data = poly_contract.methods.transfer('0x90E9D32d4b41af3c67ea8a681ec285B7A8509b8C', 1e18).encodeABI();
 
 
 var targetOperation = {
