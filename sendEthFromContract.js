@@ -29,6 +29,7 @@ function sign(hex, privateKey){
 
 var multiSigAbi = require('./SimpleMultiSig.json').abi;
 var multiSigContractAddress = '0x90E9D32d4b41af3c67ea8a681ec285B7A8509b8C';
+// var multiSigContractAddress = '0x25f7c8e6624edb5e288a6ba893cd18e1bc98bc7c';
 const contract = new web3.eth.Contract(multiSigAbi, multiSigContractAddress);
 
 
@@ -49,7 +50,9 @@ function randomAddress()
         toBeSigned = 2;
     }
     var other= addresses.splice(toBeSkiped, 1);
-    targetOperation.to = '0x' + other[0].address;
+    // targetOperation.to = '0x' + other[0].address;
+    targetOperation.to = '0x25f7c8e6624edb5e288a6ba893cd18e1bc98bc7c'; //'0x' + other[0].address;
+    // targetOperation.to = '0x90E9D32d4b41af3c67ea8a681ec285B7A8509b8C';
     return addresses;
 }
 

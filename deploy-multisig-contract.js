@@ -22,7 +22,7 @@ prompt.run()
         var contract_abi = require('./contracts-build/SimpleMultiSig.abi');
         console.log(contract_abi);
         var contract = new web3.eth.Contract(contract_abi);
-        var contract_bin = fs.readFileSync('./contracts-build/SimpleMultiSig.bin', 'utf-8');
+        var contract_bin = '0x' + fs.readFileSync('./contracts-build/SimpleMultiSig.bin', 'utf-8');
         var addresses = [keyStore.address, toAddress.address, address3.address];
         addresses.sort();
         // addresses = addresses.map( eb3.utils.toChecksumAddress );
@@ -58,7 +58,7 @@ function contractDeploy(web3, account, data) {
     ]).then((results) => {
         var price = results[0];
         var count = results[1];
-        rawTx.gasLimit = 5000000;
+        rawTx.gasLimit = 1000000;
         rawTx.gasPrice = price / 2;
         rawTx.nonce = count;
         console.log('gasPrice', price);
