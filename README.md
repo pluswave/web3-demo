@@ -19,7 +19,7 @@
 | deploy-multisig-contract.js | 部署多重签名智能合约        |
 | sendEthFromContract.js      | 从多签合约发送ETH          |
 | getTokenFromContract.js     | 从多签合约调用其他合约      |
-| sendErc20FromContract.js    | 从多签合约发送ERC20        |
+| sendErc20FromContract.js    | 从多签合约发送ERC20   |
 
 除了 subscribe_eth_balance.js 使用了parity特别的接口，其他的使用通用的接口。
 
