@@ -17,7 +17,7 @@ function getAccountForAddress(address_json){
 const web3 = require('./web3-instance');
 
 function sign(hex, privateKey){
-    var sig = secp256k1.keyFromPrivate(new Buffer(privateKey, 'hex')).sign(hex, {
+    var sig = secp256k1.keyFromPrivate(new Buffer(privateKey.slice(2), 'hex')).sign(hex.slice(2), {
         canonical: true
     });
     sig.v = sig.recoveryParam + 27; // old method befor eip 155 
@@ -49,7 +49,7 @@ function randomAddress()
         toBeSigned = 2;
     }
     var other= addresses.splice(toBeSkiped, 1);
-    targetOperation.to = other[0].address;
+    targetOperation.to = '0x' + other[0].address;
     return addresses;
 }
 
@@ -62,12 +62,13 @@ var twoAddresses = randomAddress();
 var sig1, sig2;
 contract.methods.nonce().call().then( nonce => {
     toBeSigned = web3.utils.soliditySha3(
-        0x19,
-        0x00,
-        multiSigContractAddress,
-        targetOperation.to,
-        targetOperation.value,
-        nonce
+        {t: 'uint8', v: 0x19 },
+        {t: 'uint8', v: 0x00 },
+        {t: 'bytes', v: multiSigContractAddress },
+        {t: 'bytes', v: targetOperation.to },
+        {t: 'uint256', v: targetOperation.value},
+        {t: 'bytes', v: targetOperation.data },
+        {t: 'uint256', v: nonce },
          );
     return getAccountForAddress(twoAddresses[0]);
 })
@@ -117,7 +118,7 @@ function contractExecute(web3, account, contract, method) {
         var price = results[0];
         var count = results[1];
         // var tx = new Tx(rawTx);
-        rawTx.gasLimit = 3000000; // results[2] * 2;
+        rawTx.gasLimit = 100000; // results[2] * 2;
         rawTx.gasPrice = price;
         rawTx.nonce = count;
         console.log('gasPrice', price);
