@@ -29,7 +29,8 @@ function sign(hex, privateKey){
 
 var multiSigAbi = require('./SimpleMultiSig.json').abi;
 // var multiSigContractAddress = '0x90E9D32d4b41af3c67ea8a681ec285B7A8509b8C';
-var multiSigContractAddress = '0x25f7c8e6624edb5e288a6ba893cd18e1bc98bc7c';
+// var multiSigContractAddress = '0x25f7c8e6624edb5e288a6ba893cd18e1bc98bc7c';
+var multiSigContractAddress = '0x6019f848ED0FD72d0c75CA2ED64BB37f9A96003b';
 const contract = new web3.eth.Contract(multiSigAbi, multiSigContractAddress);
 
 const poly_abi = require('./polyabi.json');

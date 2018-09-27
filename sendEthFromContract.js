@@ -21,6 +21,7 @@ function sign(hex, privateKey){
         canonical: true
     });
     sig.v = sig.recoveryParam + 27; // old method befor eip 155 
+    // sig.v = sig.recoveryParam + 41; // ropsten after eip 155. ecrecover always use 27!
     sig.r  =  web3.utils.leftPad('0x' + sig.r.toString(16), 64);
     sig.s  =  web3.utils.leftPad('0x' + sig.s.toString(16), 64);
     return sig;
