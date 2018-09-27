@@ -12,7 +12,7 @@ const contract = new web3.eth.Contract(poly_abi, '0x96A62428509002a7aE5F6AD29E47
     from: keyStore.address
 })
 
-contract.methods.balanceOf(keyStore.address).call()
+contract.methods.balanceOf('0x90e9d32d4b41af3c67ea8a681ec285b7a8509b8c').call()
     .then( (b)=>{
         console.log('balance', b);
 

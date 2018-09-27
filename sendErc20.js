@@ -25,7 +25,7 @@ prompt.run()
             from: account.address
         })
         
-        const method = contract.methods.transfer('0x931D7e796984a15BEd2f89A796F44e6bDbb0117A', '' + 1e17);
+        const method = contract.methods.transfer('0x25f7c8e6624edb5e288a6ba893cd18e1bc98bc7c', '' + 1e17);
         contractExecute(web3, account, contract, method)
             .then( (r)=>{
                 console.log('success', r);

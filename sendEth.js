@@ -21,7 +21,7 @@ prompt.run()
         var account = accounts.decrypt(keyStore, password);
 
         var keyStore_to = require('./to_address.json');
-        sendEth(web3, account, '0x931D7e796984a15BEd2f89A796F44e6bDbb0117A', '0.008')
+        sendEth(web3, account, '0x25f7c8e6624edb5e288a6ba893cd18e1bc98bc7c', '0.008')
             .then((r)=>{
                 console.log(r);
                 process.exit(0);
@@ -45,7 +45,7 @@ function sendEth(web3, fromAccount, toAddress, eth_amount) {
         nonce: '0x00',
         value: web3.utils.toWei(eth_amount),
         gasPrice: '0x09184e72a000',
-        gasLimit: '21000', // 
+        gasLimit: '42000', // 
     }
 
 
